@@ -1,0 +1,6 @@
+<%= @surgery.title %>
+<%= @surgery.room %>
+<h2>Other surgeries happening this day of the week:</h2>
+  <% @surgery.day_of_surgery.each do |title| %>
+    <%= title %>
+  <% end %>
