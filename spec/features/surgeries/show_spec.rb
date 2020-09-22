@@ -34,13 +34,26 @@ RSpec.describe 'Surgerys show page' do
       expect(page).to have_content(title)
     end
   end
+
+  it "I see a field with instructions to Add A Doctor To This Surgery" do
+    expect(page).to have_field(:name)
+
+    fill_in :name, with: @doc2.name
+    expect(page).to have_button("Submit")
+    
+    click_on "Submit"
+    expect(current_path).to eq("/surgeries/#{@surg1.id}")
+
+    expect(page).to have_content(@doc2.name)
+  end
 end
 
-# User Story 2 , Surgery Show Page
+# User Story 3, Add a Doctor to a Surgery
 # As a visitor
-# When I visit the surgery index page
-# I can click on any surgery title to take me to that surgery’s show page
-# And on the show page I see the title and operating room number of that surgery
-# And I see a section of the page that says "Other surgeries happening this day of the week:"
-# And under that header I see titles of all surgeries that happen on the same day of the week as this surgery.
-# (Note: You do not need to use the created_at or updated_at columns for Surgeries)
+# When I visit a surgery's show page
+# I see a field with instructions to "Add A Doctor To This Surgery"
+# When I input the name of a Doctor into that field
+# And I click submit
+# I'm taken back to that surgery's show page
+# And I see the name of that doctor listed on the page
+# (Note: you do not need to handle any sad paths)

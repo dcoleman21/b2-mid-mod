@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   get '/surgeries', to: 'surgeries#index'
   get '/surgeries/:id', to: 'surgeries#show'
+  post '/surgeries/:id', to: 'surgery_doctors#create'
 end
