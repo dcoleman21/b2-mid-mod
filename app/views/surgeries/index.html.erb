@@ -1,0 +1,6 @@
+<% @surgeries.each do |surgery| %>
+  <p><%= surgery.title %></p>
+  <% surgery.doctors.each do |doctor| %>
+    <p><%= doctor.name %></p>
+  <% end %>
+<% end %>
