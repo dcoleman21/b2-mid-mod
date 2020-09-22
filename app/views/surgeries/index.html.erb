@@ -1,5 +1,5 @@
 <% @surgeries.each do |surgery| %>
-  <p><%= surgery.title %></p>
+  <p><%= link_to surgery.title, "/surgeries/#{surgery.id}" %></p>
   <% surgery.doctors.each do |doctor| %>
     <p><%= doctor.name %></p>
   <% end %>

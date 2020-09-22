@@ -18,11 +18,13 @@ RSpec.describe 'Surgerys Index page' do
     @surgeries = Surgery.all
     visit '/surgeries'
   end
+
   it "I see the title of all surgeries." do
     @surgeries.each do |surgery|
       expect(page).to have_content(surgery.title)
     end
   end
+
   it "for each surgery I see the names of all doctors performing that surgery" do
     @surg1.doctors.each do |doctor|
       expect(page).to have_content(doctor.name)
@@ -39,6 +41,14 @@ RSpec.describe 'Surgerys Index page' do
     @surg4.doctors.each do |doctor|
       expect(page).to have_content(doctor.name)
     end
+  end
+
+  it "I can click on any surgery title to take me to that surgery’s show page" do
+    expect(page).to have_link(@surg1.title)
+
+    click_link @surg1.title
+
+    expect(current_path).to eq("/surgeries/#{@surg1.id}")
   end
 end
 
